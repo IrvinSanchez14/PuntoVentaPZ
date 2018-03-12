@@ -1,0 +1,64 @@
+<link rel="stylesheet" href="../CSS/estilop.css" />
+<?php
+	date_default_timezone_set   ('America/El_Salvador');
+	include_once('../conexion/connection.php');
+	$fecha = date('Y-m-d');
+	$con=new conexion();
+	$fecha_inicio = '';
+	$query_fecha = "SELECT * from fechas_cortez ORDER BY id_fechac DESC LIMIT 1";
+	$bdq10= $con->Ejecutar($query_fecha) or die ("error en la consulta bdq10");
+	while($row2 = mysqli_fetch_array($bdq10))
+		{
+			$fecha_inicio .= $row2['fecha_inicio'];
+		}
+	$diseno = "<style> table {border-collapse: collapse;width:20px;} table, th, td {border: 1px solid black;} #irvin{font-size: 12px;} </style>";
+	echo $diseno;
+	$total_3 = 0;
+	
+	
+	$tabla = "<a href='../'>>>>ATRAS>>>></a>".$fecha."<table id='irvin' ><tr><th>Productos</th><th>Sistema</th><th>Fisico</th><th>Dif</th></tr>";
+	$historial_inventario_e = "SELECT t4.unidad as nombre_unidad,t1.unidad,nombre,id_ingrediente,SUM(t1.cantidad)as total from historial_inventario t1 left join ingredientes using(ID_ingrediente) left join productos using(ID_producto) left join unidad_medida t4 on t1.unidad=t4.id_unidad where date(fechahora_elaborado)between '$fecha_inicio' and '$fecha' group by t1.id_ingrediente,unidad order by nombre;";
+	$bdq= $con->Ejecutar($historial_inventario_e) or die ("error en la consulta bdq");
+	while($row = mysqli_fetch_array($bdq))
+	{
+		$id = $row['id_ingrediente'];
+		$unidad = $row['unidad'];
+		$ventas_diarias = "SELECT unidad,nombre,id_ingrediente,COUNT(cantidad)as total2 from ventas_invt t2  left join productos using(id_producto) where date(fecha_creacion) between '$fecha_inicio' and '$fecha' AND t2.id_ingrediente=$id and unidad=$unidad group by t2.id_ingrediente order by nombre";
+		$codigo_venta = " SELECT  distinct t4.unidad as nombre_unidad, t1.unidad,id_ingrediente,nombre,SUM(t1.cantidad)as total  from historial_inventario t1 left join ingredientes using(ID_ingrediente) left join productos using(ID_producto) left join unidad_medida t4 on t1.unidad=t4.id_unidad   where not exists (select * from ventas_invt where id_ingrediente=t1.id_ingrediente and t1.unidad=unidad )  and date(fechahora_elaborado) between '$fecha_inicio' and '$fecha' group by t1.id_ingrediente,unidad order by nombre";
+		$datos_sucursal = "SELECT id_ingrediente,sum(cantidad)as total_sucursal from existencia_sucursal where id_ingrediente=$id and unidad=$unidad and date(fechahora_enviado)='$fecha' group by id_ingrediente;";
+		$bdq2= $con->Ejecutar($ventas_diarias) or die ("error en la consulta bdq2");
+		$bdq3= $con->Ejecutar($codigo_venta) or die ("error en la consulta bdq2");
+		$bdq4= $con->Ejecutar($datos_sucursal) or die ("error en la consulta bdq4");
+		while($row2 = mysqli_fetch_array($bdq2))
+		{	
+			if($unidad = $row2['unidad']){
+			$tabla .= "<tr><td>".$row['nombre']." ".$row['nombre_unidad']."</td><td>".$total_1 =round(($row['total'] - $row2['total2']),2)."</td>";
+			while($row4 = mysqli_fetch_array($bdq4)){
+			$tabla .= "<td>".$total_2 = ($row4['total_sucursal'])."</td>";
+			$tabla .= "<td>".round($total_1 - $total_2,2)."</td></tr>";
+			}
+		}
+	}
+}
+	while($row3 = mysqli_fetch_array($bdq3)){
+		$id1 = $row3['id_ingrediente'];
+		$unidad = $row3['unidad'];
+		if ($row3['unidad']== $unidad){
+			$tabla .= "<tr bgcolor='#FF0000'><td title='no se han movido desde ultimo abastecimiento' bgcolor='#FF0000' >".$row3['nombre']." ".$row3['nombre_unidad']."</td><td>".$total_4 = ($row3['total'])."</td>";
+		}
+			$codigo_vperdida ="SELECT distinct id_ingrediente, t1.unidad,nombre,SUM(t1.cantidad)as total from existencia_sucursal t1 left join ingredientes using(ID_ingrediente) left join productos using(ID_producto) where not exists (select * from ventas_invt where id_ingrediente=t1.id_ingrediente and t1.unidad=unidad) and id_ingrediente=$id1 and t1.unidad=$unidad AND date(fechahora_enviado)='$fecha'  group by t1.id_ingrediente order by nombre;";
+		
+	$bdq5= $con->Ejecutar($codigo_vperdida) or die ("error en la consulta bdq5");
+	while($row5 =  mysqli_fetch_array($bdq5)){
+		$id_1 = $row5['id_ingrediente'];
+			if ($row3['unidad']==$row5['unidad']){
+			$tabla .= "<td>".$total_3 = ($row5['total'])."</td>";
+			$tabla .= "<td>".round(($total_4 - $total_3),2)."</td></tr>";
+			}
+			
+	}
+		
+}
+	
+	echo $tabla;
+?>

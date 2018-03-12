@@ -1,0 +1,390 @@
+html, body
+{
+    font-family: Verdana, sans-serif; 
+    font-size: 1.0em;
+    height: 100%;
+    width:100%;
+    margin:0;
+    padding: 0;
+    background-color: #000;
+    color: whitesmoke;
+}
+
+h1
+{
+    font-size: 1em;
+    text-align: center;
+    margin: 2px;
+    color: whitesmoke;
+}
+
+h2
+{
+    font-size: 0.8em;
+    text-align: left;
+    margin: 0px;
+}
+
+a {
+    font-style: normal;
+    text-decoration: none;
+    display: block;
+    background-color: black;
+    padding:8px 3px;
+    border-radius: 5px;
+    margin:3px;
+    color:white;
+}
+
+table.ancha {
+    width: 100%;
+    padding: 0 1px;
+}
+
+table.bordes td, table.bordes th {
+    border: 1px solid #FFF;
+}
+
+table.estandar {
+    border-collapse: collapse;
+    vertical-align: middle;                                                                             
+}
+
+table.estandar th {
+    color: yellow;
+}
+
+table.estandar td, table.estandar th {
+    margin:0;
+    padding: 0px;
+}
+
+table.amplia td, table.amplia th {
+    padding: 5px 5px;
+    text-align: center;
+}
+
+table.zebra tr:nth-child(odd) td
+{
+  background-color:#FFE4C6;
+}
+
+table.resalte tr:hover {
+    color: blue;
+    background-color: whitesmoke;
+}
+
+table.centrada td {
+    text-align: center;
+}
+input, button {
+    text-align: center;
+}
+
+input[type="text"], input[type="password"], input[type="number"] {
+    padding: 0;
+    font-weight: bold;
+    color: blue;
+}
+
+input[type=checkbox]
+{
+  vertical-align: middle;
+  padding: 0px;
+  margin: 0px;
+}
+
+.producto {
+    cursor: default;
+}
+
+.producto:hover {
+    border-bottom: 1px dashed white;
+}
+
+.mesa {
+
+}
+
+div#pedidos {
+    padding-bottom: 30px;
+}
+
+.detalle_hora {
+    color: #B7B5B5;
+    font-size:0.7em;
+}
+
+.estado_despacho {
+    font-weight: bold;
+    cursor: not-allowed;
+}
+
+.editar_pedido {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.adicionales_precio {
+    cursor: pointer;
+}
+
+.cancelar_pedido {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.contenedor_mesa_mesero {
+    width: 200px;
+}
+
+.cambio_mesa {
+    font-weight: bold !important;
+    font-size: 1.4em !important;
+    color: red !important;
+}
+
+div.orden {
+    background-color: grey;
+    border: 5px solid whitesmoke;
+    border-radius: 5px;
+    margin: 10px 0;
+    padding: 5px;
+    position: relative;
+    vertical-align: top;
+    overflow: auto;  
+}
+
+div.orden.ghost {
+    background-color: #333;
+    border: 1px solid whitesmoke;
+    margin: 2px 0;
+    padding: 2px;
+    position: relative;
+    vertical-align: top;
+    overflow: auto;
+    font-size: 0.8em;
+}
+
+div.pago_pendiente {
+    background: url('../IMG/dinero.gif') grey bottom right no-repeat;
+}
+
+
+span.grupo {
+    font-size: 1.2em;
+    color: yellow;
+}
+
+div.contenedor_encabezado_orden
+{
+    background-color: springgreen;
+    margin-bottom: 2px;
+    border-radius:5px;
+    border: 3px solid #000000;
+    padding: 2px;
+}
+
+table.encabezado_orden {
+    background: none;
+    color: black;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table.encabezado_orden td {
+    vertical-align:middle;
+}
+
+.contenedor_botones button {
+    min-width: 70px;
+    text-align: center;
+}
+.cuenta {
+    background-color: #A3A3A3;
+    color: #FFFFF0;
+    font-size: 0.9em;
+    padding: 3px;
+    margin: 2px 0px;
+    border-radius: 5px;
+}
+
+.vineta {
+    font-size: 0.7em;
+    padding: 2px;
+    margin: 1px 0px;
+    border-radius: 5px;
+}
+
+.controles_seleccion {
+    display: none;
+}
+
+.adicionales ul {
+    margin: 1px 0px;
+    padding-left: 20px;
+    color: lightblue;
+}
+
+ .remociones ul {
+    margin: 1px 0px;
+    padding-left: 20px;
+    color: pink;     
+ }
+    
+.precio {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: blue;
+    text-align: right;
+    padding-right: 5px;
+}
+
+.precio_precalculo {
+    font-size: 0.9em;
+    text-align: center;
+    font-family: monospace;
+}
+
+div.pedido {
+    position: relative;
+    text-wrap: none;
+    white-space: nowrap;
+    line-height: 1.4em;
+}
+
+.pedido_id {
+    cursor: not-allowed;
+    font-weight: bold;
+}
+
+.historia {
+    background-color:black;
+    color:pink;
+    padding: 0 3px;
+}
+
+.simplemodal-close {background-color: white;}
+#simplemodal-overlay {background-color:#DDD;}
+#simplemodal-container {background-color:#000; border:8px solid #444; padding:12px;}
+
+#cocina p {
+    margin: 0px;
+    padding: 0px;
+}
+
+#cocina .producto {
+    font-size: 1em;
+    white-space: nowrap;
+    overflow: hidden;
+    color: snow;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+}
+
+#cocina .mesa {
+
+}
+
+#cocina div#pedidos {
+    height: 100%;
+    overflow: hidden;
+}
+
+#cocina div.pedidos {
+}
+
+#cocina span.grupo {
+    font-size:1.3em;
+    position: absolute;
+    color: yellow;
+    left: 10px;
+    top: 5px;
+}
+
+#cocina .adicionales ul, .ingredientes ul {
+    padding-left: 5px;
+    margin: 0;
+}
+
+#cocina .adicionales ul li, .ingredientes ul li {
+    font-size: 0.9em;
+    padding-left: 5px;
+    margin-left: 20px;
+}
+    
+#cocina span.tiempo {
+    font-size:1.3em;
+    position: absolute;
+    color: yellow;
+    right: 10px;
+    top: 5px;
+}
+
+#cocina div.mesero {
+    font-weight: 1em;
+}
+
+#cocina div.pedido {
+    padding: 0 1px;
+    position: relative;
+}
+
+#cocina div.mucho_tiempo {
+    border: 1px solid red !important;
+}
+
+.btn {
+	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf) );
+	background:-moz-linear-gradient( center top, #ededed 5%, #dfdfdf 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf');
+	background-color:#ededed;
+	-webkit-border-top-left-radius:6px;
+	-moz-border-radius-topleft:6px;
+	border-top-left-radius:6px;
+	-webkit-border-top-right-radius:6px;
+	-moz-border-radius-topright:6px;
+	border-top-right-radius:6px;
+	-webkit-border-bottom-right-radius:6px;
+	-moz-border-radius-bottomright:6px;
+	border-bottom-right-radius:6px;
+	-webkit-border-bottom-left-radius:6px;
+	-moz-border-radius-bottomleft:6px;
+	border-bottom-left-radius:6px;
+	text-indent:0;
+	border:1px solid #000000;
+	display:inline-block;
+	color:#2b2a2b;
+	font-family:arial;
+	font-size:1em;
+	font-weight:bold;
+	font-style:normal;
+	height:24px;
+	line-height:20px;
+	min-width:100px;
+	text-decoration:none;
+	text-align:center;
+	text-shadow:1px 1px 0px #ffffff;
+        margin: 1px;
+}
+.btn:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed) );
+	background:-moz-linear-gradient( center top, #dfdfdf 5%, #ededed 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
+	background-color:#dfdfdf;
+}
+.btn:active {
+	position:relative;
+	top:1px;
+}
+
+.info_domicilio {
+    background: white;
+    color: black;
+    font-family: 'Courier New';
+    padding: 5px;
+    border-radius: 5px;
+}
