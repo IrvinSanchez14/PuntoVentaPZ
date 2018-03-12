@@ -2,7 +2,7 @@
 setlocale                   (LC_ALL, 'es_SV.UTF-8');
 date_default_timezone_set   ('America/El_Salvador');
 
-define('NOMBRE_RESTAURANTE', 'La Pizzeria');
+define('NOMBRE_RESTAURANTE', 'Restaurante');
 define('ID_SERVIDOR', 'LPCASTANOS');
 define('MODO_GLOBAL', 'NORMAL'); // MODOS: [ NORMAL | DOMICILIO ]
 define('URI_SERVIDOR', '/SERV'); // URI relativa o absoluta hacia el servidor
