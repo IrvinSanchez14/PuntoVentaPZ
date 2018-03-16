@@ -5,8 +5,8 @@ date_default_timezone_set   ('America/El_Salvador');
 define('NOMBRE_RESTAURANTE', 'Restaurante');
 define('ID_SERVIDOR', 'LPCASTANOS');
 define('MODO_GLOBAL', 'NORMAL'); // MODOS: [ NORMAL | DOMICILIO ]
-define('URI_SERVIDOR', '/SERV'); // URI relativa o absoluta hacia el servidor
-define('URI_AUT', '/AUT'); // URI relativa o absoluta hacia el autorizador
+define('URI_SERVIDOR', '/PuntoVentaPZ/SERV'); // URI relativa o absoluta hacia el servidor
+define('URI_AUT', '/PuntoVentaPZ/AUT'); // URI relativa o absoluta hacia el autorizador
 define('ID_CACHE', "RSV_SQL_" . crc32(ID_SERVIDOR . URI_SERVIDOR) );
 define('SUCURSAL_EMPRESA','LA PIZZERIA S.A. de C.V.');
 define('SUCURSAL_DIRECCION', 'Multiplaza<br />Carretera Panamericana<br />Antiguo Cuscatlan.'); // direccion de la sucursal
@@ -17,7 +17,7 @@ define('USAR_AUT', false); // forzar autorizaciÃ³n para CAJA y PEDIDOS
 define('db__host','localhost');
 define('db__usuario','root'); // Nombre de usuario de base de datos
 define('db__clave',''); // Clave de base de datos
-define('db__db','rsv2'); // Base de datos
+define('db__db','originalp'); // Base de datos
 
 $__listado_nodos['todos'] = 'Todas las ordenes';
 $__listado_nodos['pizzas'] = 'Pizzas y entradas horneadas';
