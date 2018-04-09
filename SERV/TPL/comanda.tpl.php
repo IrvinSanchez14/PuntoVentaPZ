@@ -1,4 +1,5 @@
 <?php
+$json = array();
 if (isset($_POST['ver']))
 {
     $estacion = db_codex($_POST['ver']);
