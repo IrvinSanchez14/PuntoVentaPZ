@@ -22,7 +22,7 @@ function MostrarRejillaProductos(datos)
 
     for (x in datos.aux)
     {
-        if(datos.aux[x].inicio == 1 && fecha == 1 || datos.aux[x].inicio == 0   )
+        if(datos.aux[x].inicio == 1 || datos.aux[x].inicio == 6 && fecha == 1 || datos.aux[x].inicio == 0   )
         {
             _productos[datos.aux[x].ID_producto] = datos.aux[x];
 
@@ -30,7 +30,7 @@ function MostrarRejillaProductos(datos)
 
             indice++;
         }
-        else if(datos.aux[x].inicio == 2  && fecha == 2 || datos.aux[x].inicio == 0  )
+        else if(datos.aux[x].inicio == 2 || datos.aux[x].inicio == 6   && fecha == 2 || datos.aux[x].inicio == 0  )
         {
             _productos[datos.aux[x].ID_producto] = datos.aux[x];
 
@@ -38,7 +38,7 @@ function MostrarRejillaProductos(datos)
 
             indice++;
         }
-        else if(datos.aux[x].inicio == 3  && fecha == 3 || datos.aux[x].inicio == 0  )
+        else if(datos.aux[x].inicio == 3 || datos.aux[x].inicio == 6  && fecha == 3 || datos.aux[x].inicio == 0  )
         {
             _productos[datos.aux[x].ID_producto] = datos.aux[x];
 
@@ -46,7 +46,7 @@ function MostrarRejillaProductos(datos)
 
             indice++;
         }
-        else if(datos.aux[x].inicio == 4  && fecha == 4 || datos.aux[x].inicio == 0  )
+        else if(datos.aux[x].inicio == 4 || datos.aux[x].inicio == 6   && fecha == 4 || datos.aux[x].inicio == 0  )
         {
             _productos[datos.aux[x].ID_producto] = datos.aux[x];
 
@@ -54,7 +54,7 @@ function MostrarRejillaProductos(datos)
 
             indice++;
         }
-        else if(datos.aux[x].inicio == 5  && fecha == 5 || datos.aux[x].inicio == 0  )
+        else if(datos.aux[x].inicio == 5 || datos.aux[x].inicio == 6 && fecha == 5 || datos.aux[x].inicio == 0  )
         {
             _productos[datos.aux[x].ID_producto] = datos.aux[x];
 
@@ -234,6 +234,50 @@ function personalizar_producto_ingredientes_y_adicionales(str_producto)
                 buffer += '</tr>';
             }
             else if (datos.aux.adicionables[x].disponible == 1 ) {
+                buffer += '<tr rel="'+datos.aux.adicionables[x].afinidad+'">';
+                buffer += '<td style="text-align:center;"><input title="Agregar ( x1 )" type="checkbox" class="agregar_adicionable ppia_adicional" grupo="G_'+datos.aux.adicionables[x].ID_adicional+'" value="' + datos.aux.adicionables[x].ID_adicional + '" /></td>';
+                buffer += '<td style="text-align:center;"><input title="Agregar doble ( x2 )" type="checkbox" grupo="G_'+datos.aux.adicionables[x].ID_adicional+'" class="agregar_doble_adicionable ppia_adicional" value="' + datos.aux.adicionables[x].ID_adicional + '" /></td>';
+                buffer += '<td style="text-align:center;">$' + datos.aux.adicionables[x].precio + '</td>';
+                buffer += '<td>' + datos.aux.adicionables[x].nombre + '</td>';
+                buffer += '<td style="text-align:center;"><input title="quitar" grupo="G_'+datos.aux.adicionables[x].ID_adicional+'" type="checkbox" class="quitar_adicionable ppia_adicional" value="' + datos.aux.adicionables[x].ID_adicional + '" /></td>';
+                buffer += '</tr>';
+            }
+        }
+    }
+    else if (str_producto == 343) {
+        for (x in datos.aux.adicionables)
+        {
+            if (datos.aux.adicionables[x].dias == 12) {
+                buffer += '<tr style="background:#F5A9A9;" rel="'+datos.aux.adicionables[x].afinidad+'">';
+                buffer += '<td style="text-align:center;"><input title="Agregar ( x1 )" type="checkbox" class="agregar_adicionable ppia_adicional" grupo="G_'+datos.aux.adicionables[x].ID_adicional+'" value="' + datos.aux.adicionables[x].ID_adicional + '" /></td>';
+                buffer += '<td style="text-align:center;"><input title="Agregar doble ( x2 )" type="checkbox" grupo="G_'+datos.aux.adicionables[x].ID_adicional+'" class="agregar_doble_adicionable ppia_adicional" value="' + datos.aux.adicionables[x].ID_adicional + '"/></td>';
+                buffer += '<td style="text-align:center;">$' + datos.aux.adicionables[x].precio + '</td>';
+                buffer += '<td>' + datos.aux.adicionables[x].nombre + '</td>';
+                buffer += '<td style="text-align:center;"><input title="quitar" grupo="G_'+datos.aux.adicionables[x].ID_adicional+'" type="checkbox" class="quitar_adicionable ppia_adicional" value="' + datos.aux.adicionables[x].ID_adicional + '" /></td>';
+                buffer += '</tr>'
+            }
+
+            else if (datos.aux.adicionables[x].dias == 16) {
+                buffer += '<tr style="background:#F5A9A9;" rel="'+datos.aux.adicionables[x].afinidad+'">';
+                buffer += '<td style="text-align:center;"><input title="Agregar ( x1 )" type="checkbox" class="agregar_adicionable ppia_adicional" grupo="G_'+datos.aux.adicionables[x].dias+'" value="' + datos.aux.adicionables[x].ID_adicional + '"  checked="checked" /></td>';
+                buffer += '<td style="text-align:center;"><input title="Agregar doble ( x2 )" type="checkbox" grupo="G_'+datos.aux.adicionables[x].dias+'" class="agregar_doble_adicionable ppia_adicional" value="' + datos.aux.adicionables[x].ID_adicional + '" /></td>';
+                buffer += '<td style="text-align:center;">$' + datos.aux.adicionables[x].precio + '</td>';
+                buffer += '<td>' + datos.aux.adicionables[x].nombre + '</td>';
+                buffer += '<td style="text-align:center;"><input title="quitar" grupo="G_'+datos.aux.adicionables[x].dias+'" type="checkbox" class="quitar_adicionable ppia_adicional" value="' + datos.aux.adicionables[x].ID_adicional + '" /></td>';
+                buffer += '</tr>';
+            }
+
+            else if (datos.aux.adicionables[x].dias == 11 ) {
+                buffer += '<tr style="background:#F5A9A9;" rel="'+datos.aux.adicionables[x].afinidad+'">';
+                buffer += '<td style="text-align:center;"><input title="Agregar ( x1 )" type="checkbox" class="agregar_adicionable ppia_adicional" grupo="G_'+datos.aux.adicionables[x].ID_adicional+'" value="' + datos.aux.adicionables[x].ID_adicional + '" /></td>';
+                buffer += '<td style="text-align:center;"><input title="Agregar doble ( x2 )" type="checkbox" grupo="G_'+datos.aux.adicionables[x].ID_adicional+'" class="agregar_doble_adicionable ppia_adicional" value="' + datos.aux.adicionables[x].ID_adicional + '" /></td>';
+                buffer += '<td style="text-align:center;">$' + datos.aux.adicionables[x].precio + '</td>';
+                buffer += '<td>' + datos.aux.adicionables[x].nombre + '</td>';
+                buffer += '<td style="text-align:center;"><input title="quitar" grupo="G_'+datos.aux.adicionables[x].ID_adicional+'" type="checkbox" class="quitar_adicionable ppia_adicional" value="' + datos.aux.adicionables[x].ID_adicional + '" /></td>';
+                buffer += '</tr>';
+
+            }
+            else if (datos.aux.adicionables[x].disponible == 1) {
                 buffer += '<tr rel="'+datos.aux.adicionables[x].afinidad+'">';
                 buffer += '<td style="text-align:center;"><input title="Agregar ( x1 )" type="checkbox" class="agregar_adicionable ppia_adicional" grupo="G_'+datos.aux.adicionables[x].ID_adicional+'" value="' + datos.aux.adicionables[x].ID_adicional + '" /></td>';
                 buffer += '<td style="text-align:center;"><input title="Agregar doble ( x2 )" type="checkbox" grupo="G_'+datos.aux.adicionables[x].ID_adicional+'" class="agregar_doble_adicionable ppia_adicional" value="' + datos.aux.adicionables[x].ID_adicional + '" /></td>';
