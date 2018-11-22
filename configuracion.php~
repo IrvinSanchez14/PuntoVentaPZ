@@ -16,7 +16,7 @@ define('USAR_AUT', false); // forzar autorizaciÃ³n para CAJA y PEDIDOS
 
 define('db__host','localhost');
 define('db__usuario','root'); // Nombre de usuario de base de datos
-define('db__clave','L@pizzeria007'); // Clave de base de datos
+define('db__clave','010194'); // Clave de base de datos
 define('db__db','rsv'); // Base de datos
 
 $__listado_nodos['todos'] = 'Todas las ordenes';
@@ -55,4 +55,3 @@ $__caja['cave'] = ''; // Si se establece algo aqui, se utilizarÃ¡ como clave p
 
 $__servidor_externo_pp['LPDOMICILIO'] = 'http://serv.domicilio.lapizzeria.com.sv';
 ?>
-
