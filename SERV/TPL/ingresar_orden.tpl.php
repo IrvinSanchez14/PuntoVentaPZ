@@ -6,7 +6,8 @@
 
 $permisos[] = 'ingresar_pedidos';
 sesion::verificar($permisos);
-
+$json = array();
+$grupo = array();
 if ( ! sesion::$autorizado )
 {
     $json['AUT'] = 'no';

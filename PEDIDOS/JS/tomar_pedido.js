@@ -22,65 +22,11 @@ function MostrarRejillaProductos(datos)
 
     for (x in datos.aux)
     {
-        if(datos.aux[x].inicio == 1 || datos.aux[x].inicio == 6 && fecha == 1 || datos.aux[x].inicio == 0   )
-        {
             _productos[datos.aux[x].ID_producto] = datos.aux[x];
 
             buffer += '<div tabindex="'+indice+'" producto="'+datos.aux[x].ID_producto+'" nombre="' + datos.aux[x].nombre + '" precio="' + datos.aux[x].precio + '" ' + (datos.aux[x].disponible == 0 ? 'style="text-decoration:line-through"' : '') +' class="agregar_producto" ><div class="nombre">' + datos.aux[x].nombre + '</div>&nbsp;<div class="precio">$' + parseFloat(datos.aux[x].precio).toFixed(2)  + '</div></div>';
 
             indice++;
-        }
-        else if(datos.aux[x].inicio == 2 || datos.aux[x].inicio == 6   && fecha == 2 || datos.aux[x].inicio == 0  )
-        {
-            _productos[datos.aux[x].ID_producto] = datos.aux[x];
-
-            buffer += '<div tabindex="'+indice+'" producto="'+datos.aux[x].ID_producto+'" nombre="' + datos.aux[x].nombre + '" precio="' + datos.aux[x].precio + '" ' + (datos.aux[x].disponible == 0 ? 'style="text-decoration:line-through"' : '') +' class="agregar_producto"><div class="nombre">' + datos.aux[x].nombre + '</div>&nbsp;<div class="precio">$' + parseFloat(datos.aux[x].precio).toFixed(2)  + '</div></div>';
-
-            indice++;
-        }
-        else if(datos.aux[x].inicio == 3 || datos.aux[x].inicio == 6  && fecha == 3 || datos.aux[x].inicio == 0  )
-        {
-            _productos[datos.aux[x].ID_producto] = datos.aux[x];
-
-            buffer += '<div tabindex="'+indice+'" producto="'+datos.aux[x].ID_producto+'" nombre="' + datos.aux[x].nombre + '" precio="' + datos.aux[x].precio + '" ' + (datos.aux[x].disponible == 0 ? 'style="text-decoration:line-through"' : '') +' class="agregar_producto"><div class="nombre">' + datos.aux[x].nombre + '</div>&nbsp;<div class="precio">$' + parseFloat(datos.aux[x].precio).toFixed(2)  + '</div></div>';
-
-            indice++;
-        }
-        else if(datos.aux[x].inicio == 4 || datos.aux[x].inicio == 6   && fecha == 4 || datos.aux[x].inicio == 0  )
-        {
-            _productos[datos.aux[x].ID_producto] = datos.aux[x];
-
-            buffer += '<div tabindex="'+indice+'" producto="'+datos.aux[x].ID_producto+'" nombre="' + datos.aux[x].nombre + '" precio="' + datos.aux[x].precio + '" ' + (datos.aux[x].disponible == 0 ? 'style="text-decoration:line-through"' : '') +' class="agregar_producto"><div class="nombre">' + datos.aux[x].nombre + '</div>&nbsp;<div class="precio">$' + parseFloat(datos.aux[x].precio).toFixed(2)  + '</div></div>';
-
-            indice++;
-        }
-        else if(datos.aux[x].inicio == 5 || datos.aux[x].inicio == 6 && fecha == 5 || datos.aux[x].inicio == 0  )
-        {
-            _productos[datos.aux[x].ID_producto] = datos.aux[x];
-
-            buffer += '<div tabindex="'+indice+'" producto="'+datos.aux[x].ID_producto+'" nombre="' + datos.aux[x].nombre + '" precio="' + datos.aux[x].precio + '" ' + (datos.aux[x].disponible == 0 ? 'style="text-decoration:line-through"' : '') +' class="agregar_producto"><div class="nombre">' + datos.aux[x].nombre + '</div>&nbsp;<div class="precio">$' + parseFloat(datos.aux[x].precio).toFixed(2)  + '</div></div>';
-
-            indice++;
-        }
-        else if(datos.aux[x].inicio == 0  && fecha == 6  )
-        {
-            _productos[datos.aux[x].ID_producto] = datos.aux[x];
-
-            buffer += '<div tabindex="'+indice+'" producto="'+datos.aux[x].ID_producto+'" nombre="' + datos.aux[x].nombre + '" precio="' + datos.aux[x].precio + '" ' + (datos.aux[x].disponible == 0 ? 'style="text-decoration:line-through"' : '') +' class="agregar_producto"><div class="nombre">' + datos.aux[x].nombre + '</div>&nbsp;<div class="precio">$' + parseFloat(datos.aux[x].precio).toFixed(2)  + '</div></div>';
-
-            indice++;
-        }
-        else if(datos.aux[x].inicio == 0  && fecha == 7  )
-        {
-            _productos[datos.aux[x].ID_producto] = datos.aux[x];
-
-            buffer += '<div tabindex="'+indice+'" producto="'+datos.aux[x].ID_producto+'" nombre="' + datos.aux[x].nombre + '" precio="' + datos.aux[x].precio + '" ' + (datos.aux[x].disponible == 0 ? 'style="text-decoration:line-through"' : '') +' class="agregar_producto"><div class="nombre">' + datos.aux[x].nombre + '</div>&nbsp;<div class="precio">$' + parseFloat(datos.aux[x].precio).toFixed(2)  + '</div></div>';
-
-            indice++;
-        }
-
-
-
 
     }
 
@@ -490,6 +436,7 @@ $(window).load(function(){
 
 $(function(){
     rsv_solicitar('producto_ingredientes_y_adicionales',{}, function(datos){
+        console.log('datos:',datos);
         for (x in datos.aux.adicionables)
         {
             _adicionales[datos.aux.adicionables[x].ID_adicional] = datos.aux.adicionables[x];
@@ -575,7 +522,6 @@ $(function(){
             }
 
             ResumenOrden();
-            var numero_personas = 0;
             var ID_mesa = 0;
 
             while ( ID_mesa == 0 ) {
@@ -598,6 +544,7 @@ $(function(){
 
             rsv_solicitar('cuenta',{mesa: ID_mesa, pendientes: true}, function(datos){
                 try {
+                  console.log('cuenta',datos);
                     if ( typeof datos.aux.pendientes != "undefined" && datos.aux.pendientes != '')
                     {
                         ID_mesero_busqueda = datos.aux.pendientes[Object.keys(datos.aux.pendientes)[0]][0].ID_mesero;
@@ -640,10 +587,25 @@ $(function(){
 
                 console.log(_orden);
 
-                rsv_solicitar('ingresar_orden',{mesa: ID_mesa, mesero: ID_mesero, orden: _orden, personas:numero_personas}, function(){
+                rsv_solicitar('ingresar_orden',{mesa: ID_mesa, mesero: ID_mesero, orden: _orden}, function(){
+                  console.log('orden',_orden);
                     reiniciarInterfaz();
                     $('#info_principal').html('<div style="color:red;font-size:14px;font-weight:bold;text-align:center;">ORDEN ENVIADA</div>');
                 });
+
+                // $.ajax({
+                //   url: 'http://localhost/PuntoVentaPZ/SERV?TPL=ingresar_orden',
+                //   type: "POST",
+                //   contentType: 'application/json',
+                //   data: { mesa: ID_mesa, mesero: ID_mesero, orden: _orden, personas:numero_personas},
+                //   success: function(dato) {
+                //     console.log('datoajax',dato);
+                //   },
+                //   error: function (xhr,resp,text) {
+                //     console.log(xhr,resp,text);
+                //   }
+                // });
+
             });
 
         });

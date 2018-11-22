@@ -457,7 +457,6 @@ $(function(){
                 return;
             }
 
-            var numero_personas = 0;
             var ID_mesa = 0;
 
             while ( ID_mesa == 0 ) {
@@ -520,7 +519,7 @@ $(function(){
                     }
                 }
 
-                rsv_solicitar('ingresar_orden',{mesa: ID_mesa, mesero: ID_mesero, orden: _orden, personas:numero_personas}, function(){
+                rsv_solicitar('ingresar_orden',{mesa: ID_mesa, mesero: ID_mesero, orden: _orden}, function(){
                     $.post('/regalo/',{regalo:regalo, operacion:'invalidar'});
                     reiniciarInterfaz();
 

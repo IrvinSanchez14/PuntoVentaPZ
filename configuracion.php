@@ -16,8 +16,8 @@ define('USAR_AUT', false); // forzar autorizaciÃ³n para CAJA y PEDIDOS
 
 define('db__host','localhost');
 define('db__usuario','root'); // Nombre de usuario de base de datos
-define('db__clave',''); // Clave de base de datos
-define('db__db','originalp'); // Base de datos
+define('db__clave','010194'); // Clave de base de datos
+define('db__db','rsv'); // Base de datos
 
 $__listado_nodos['todos'] = 'Todas las ordenes';
 $__listado_nodos['pizzas'] = 'Pizzas y entradas horneadas';
